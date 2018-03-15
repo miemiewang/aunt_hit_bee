@@ -2,7 +2,7 @@
  * 游戏基础的精灵类
  */
 export default class Sprite {
-  constructor(imgSrc = '', width=  0, height = 0, x = 0, y = 0) {
+  constructor(imgSrc = '', width=  0, height = 0, touchend = false, x = 0, y = 0) {
     this.img     = new Image()
     this.img.src = imgSrc
 
@@ -11,8 +11,9 @@ export default class Sprite {
 
     this.x = x
     this.y = y
-
+    this.angle = 0
     this.visible = true
+    this.touchend = touchend
   }
 
   /**
@@ -21,7 +22,6 @@ export default class Sprite {
   drawToCanvas(ctx) {
     if ( !this.visible )
       return
-
     ctx.drawImage(
       this.img,
       this.x,
@@ -30,7 +30,19 @@ export default class Sprite {
       this.height
     )
   }
-
+  rotateToCanvas(ctx) {
+    if (!this.touchend) return false;
+    if (this.angle > 90) {
+      this.angle = 90
+      //this.touchend = false;
+    }
+    this.angle += 2;
+    ctx.save()
+    ctx.translate(this.x + this.width / 2, this.y + this.height / 2)
+    ctx.rotate(this.angle * Math.PI / 180)
+    ctx.drawImage(this.img, -this.width / 2, -this.height / 2, this.width, this.height)
+    ctx.restore()
+  }
   /**
    * 简单的碰撞检测定义：
    * 另一个精灵的中心点处于本精灵所在的矩形内即可
