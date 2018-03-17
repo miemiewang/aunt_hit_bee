@@ -22,6 +22,7 @@ export default class Sprite {
   drawToCanvas(ctx) {
     if ( !this.visible )
       return
+      console.log(this.x+'y' +this.y)
     ctx.drawImage(
       this.img,
       this.x,
