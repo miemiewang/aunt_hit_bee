@@ -173,5 +173,7 @@ export default class Target {
         break
       }
     }
+    this.player.x = -20;
+    this.player.y = -20;
   }
 }
