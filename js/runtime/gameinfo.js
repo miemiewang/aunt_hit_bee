@@ -17,7 +17,7 @@ export default class GameInfo {
   }
 
   renderGameOver(ctx, score) {
-    ctx.drawImage(atlas, 0, 0, 119, 108, screenWidth / 2 - 150, screenHeight / 2 - 100, 300, 300)
+    // ctx.drawImage(atlas, 0, 0, 119, 108, screenWidth / 2 - 150, screenHeight / 2 - 100, 300, 300)
 
     ctx.fillStyle = "#ffffff"
     ctx.font    = "20px Arial"
@@ -34,13 +34,13 @@ export default class GameInfo {
       screenHeight / 2 - 100 + 130
     )
 
-    ctx.drawImage(
-      atlas,
-      120, 6, 39, 24,
-      screenWidth / 2 - 60,
-      screenHeight / 2 - 100 + 180,
-      120, 40
-    )
+    // ctx.drawImage(
+    //   atlas,
+    //   120, 6, 39, 24,
+    //   screenWidth / 2 - 60,
+    //   screenHeight / 2 - 100 + 180,
+    //   120, 40
+    // )
 
     ctx.fillText(
       '重新开始',

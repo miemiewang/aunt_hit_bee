@@ -24,7 +24,7 @@ export default class DataManage {
     this.bees = []
     this.flys = []
     this.gameover = false
-
+    this.touchend = false
   }
 
   /**

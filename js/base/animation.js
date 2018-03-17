@@ -13,7 +13,6 @@ const __ = {
 export default class Animation extends Sprite {
   constructor(imgSrc, width, height) {
     super(imgSrc, width, height)
-
     // 当前动画是否播放中
     this.isPlaying = false
 

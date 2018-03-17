@@ -17,12 +17,13 @@ export default class Animal extends Animation {
     super(ENEMY_IMG_SRC, ENEMY_WIDTH, ENEMY_HEIGHT)
     this.xspeed = 0
     this.yspeed = 0
+    // this.init(ENEMY_IMG_SRC)
   }
 
   init(image) {
     this.x =  window.innerWidth / 2
     this.y = window.innerHeight / 2
-    this.imageSrc = image
+    this.img.src = image
 
     this.visible = true
   }

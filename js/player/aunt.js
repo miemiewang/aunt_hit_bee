@@ -54,32 +54,32 @@ export default class Player extends Sprite {
   initEvent() {
     canvas.addEventListener('touchstart', ((e) => {
       e.preventDefault()
-      this.width = PLAYER_WIDTH
-      this.height = PLAYER_HEIGHT
-      this.angle = 0
-      this.y = screenHeight - this.height - 30
-      this.touchend = false;
+      // this.width = PLAYER_WIDTH
+      // this.height = PLAYER_HEIGHT
+      // this.angle = 0
+      // this.y = screenHeight - this.height - 30
+      // this.touchend = false;
+      // datamanage.touchend = false;
       this.start = new Date()
+      console.log(10);
     }).bind(this))
     canvas.addEventListener('touchmove', ((e) => {
-      this.move = new Date()
-      this.touchend = false;
-      this.setBatSize(this.start, this.move)
+      // this.move = new Date()
+      // this.touchend = false;
+      // datamanage.touchend = false;
+      // this.setBatSize(this.start, this.move)
     }).bind(this))
     canvas.addEventListener('touchend', ((e) => {
       e.preventDefault()
-      this.touchend = true
+      // this.touchend = true;
+      // datamanage.touchend = true;
     }).bind(this))
   }
   // 设置拍子大小
   setBatSize(x, y) {
-    let interval = (y - x)/500;
+    // let interval = (y - x)/500;
     // 向上拉伸拍子
-    this.height += interval;
-    this.y -= interval;
-  }
-  // 触摸结束后拍子下落
-  setBatAnimation() {
-
+    // this.height += interval;
+    // this.y -= interval;
   }
 }
