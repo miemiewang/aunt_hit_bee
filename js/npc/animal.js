@@ -1,5 +1,4 @@
 import Animation from '../base/animation'
-import DataBus from '../databus'
 import DataManage from '../datamanage.js'
 
 const ENEMY_IMG_SRC = 'images/enemy.png'

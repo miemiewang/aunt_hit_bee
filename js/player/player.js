@@ -1,5 +1,4 @@
 import Sprite from '../base/sprite'
-import Bullet from './bullet'
 import DataManage from '../datamanage'
 
 const screenWidth = window.innerWidth

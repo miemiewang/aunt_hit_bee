@@ -31,6 +31,7 @@ export default class Target {
     this.bg = new BackGround(ctx)
     this.player = new Player(ctx)
     this.gameinfo = new GameInfo()
+    
     this.music = new Music()
 
     this.bindLoop = this.loop.bind(this)
@@ -62,6 +63,7 @@ export default class Target {
   render() {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     this.bg.render(ctx)
+    this.bg.rotateToCanvas(ctx)
     datamanage.bees
       .concat(datamanage.flys)
       .forEach((item) => {
@@ -87,9 +89,6 @@ export default class Target {
       return;
     this.bg.update()
 
-    if (datamanage.gameOver)
-      return;
-
     datamanage.bees
       .forEach((item) => {
         item.update()
@@ -100,7 +99,7 @@ export default class Target {
         item.update()
       })
 
-    this.music.playShoot()
+    //this.music.playShoot()
     // 手指触摸结束后碰撞检测
     if(datamanage.touchend){
       this.collisionDetection();
@@ -147,7 +146,7 @@ export default class Target {
 
   // // 全局碰撞检测, 碰撞到蜜蜂死掉，碰撞到苍蝇加分
   collisionDetection() {
-
+    const that = this;
     for (let i = 0, il = datamanage.bees.length; i < il; i++) {
       let bee = datamanage.bees[i]
 
@@ -161,6 +160,7 @@ export default class Target {
       let fly = datamanage.flys[i]
 
       if (this.player.isCollideWith(fly)) {
+        that.music.playExplosion()
         datamanage.score ++
         datamanage.removeFly(fly)
         this.createFly()

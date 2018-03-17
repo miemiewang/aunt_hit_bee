@@ -1,7 +1,5 @@
 import Sprite  from './sprite'
-import DataBus from '../databus'
 
-let databus = new DataBus()
 
 const __ = {
   timer: Symbol('timer'),
@@ -38,7 +36,6 @@ export default class Animation extends Sprite {
      * 推入到全局动画池里面
      * 便于全局绘图的时候遍历和绘制当前动画帧
      */
-    databus.animations.push(this)
   }
 
   /**
