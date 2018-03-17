@@ -92,8 +92,9 @@ export default class Target {
 
   // 游戏逻辑更新主函数
   update() {
-    if (datamanage.gameOver)
-      return;
+    if (datamanage.gameOver) {
+      return false;
+    }
     this.bg.update()
     datamanage.bees
       .forEach((item) => {
@@ -155,7 +156,7 @@ export default class Target {
     for (let i = 0, il = datamanage.bees.length; i < il; i++) {
       let bee = datamanage.bees[i]
 
-      if (this.player.isCollideWith(bee)) {
+      if (bee.isCollideWith(this.player)) {
         datamanage.gameOver = true
         break
       }
@@ -164,7 +165,7 @@ export default class Target {
     for (let i = 0, il = datamanage.flys.length; i < il; i++) {
       let fly = datamanage.flys[i]
 
-      if (this.player.isCollideWith(fly)) {
+      if (fly.isCollideWith(this.player)) {
         that.music.playExplosion()
         datamanage.score++;
         datamanage.removeFly(fly)

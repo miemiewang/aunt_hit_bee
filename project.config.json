@@ -9,8 +9,8 @@
 	},
 	"compileType": "game",
 	"libVersion": "1.9.92",
-	"appid": "touristappid",
-	"projectname": "%E9%9B%AA%E5%A7%A8%E6%89%93%E8%9C%9C%E8%9C%82",
+	"appid": "ttf65a80e769705bb0",
+	"projectname": "雪姨打苍蝇",
 	"isGameTourist": true,
 	"condition": {
 		"search": {
