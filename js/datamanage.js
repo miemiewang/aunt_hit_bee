@@ -6,6 +6,7 @@ let instance
  * 全局状态管理器
  */
 export default class DataManage {
+
   constructor() {
     if (instance)
       return instance
@@ -16,10 +17,12 @@ export default class DataManage {
 
     this.reset()
   }
+
   reset() {
     this.frame = 0
     this.score = 0
     this.bees = []
+    this.flys = []
     this.gameover = false
 
   }
@@ -34,5 +37,13 @@ export default class DataManage {
     temp.visible = false
 
     this.pool.recover('bee', bee)
+  }
+
+  removeFly(fly) {
+    let temp = this.flys.shift()
+
+    temp.visible = false
+
+    this.pool.recover('fly', fly)
   }
 }
