@@ -28,6 +28,10 @@ export default class Target {
 
   restart() {
     datamanage.reset()
+    canvas.removeEventListener(
+      'touchstart',
+      this.touchHandler
+    )
     this.bg = new BackGround(ctx)
     this.player = new Player(ctx)
     this.gameinfo = new GameInfo()
@@ -38,8 +42,12 @@ export default class Target {
     this.hasEventBind = false
     // 清除上一局的动画
     window.cancelAnimationFrame(this.aniId);
+    this.aniId = window.requestAnimationFrame(
+      this.bindLoop,
+      canvas
+    )
     this.recreateAnimal();
-
+    datamanage.gameOver = false;
   }
 
   // 游戏结束后的触摸事件处理逻辑
@@ -50,7 +58,6 @@ export default class Target {
     let y = e.touches[0].clientY
 
     let area = this.gameinfo.btnArea
-
     if (x >= area.startX
       && x <= area.endX
       && y >= area.startY
@@ -88,7 +95,6 @@ export default class Target {
     if (datamanage.gameOver)
       return;
     this.bg.update()
-
     datamanage.bees
       .forEach((item) => {
         item.update()
@@ -99,7 +105,6 @@ export default class Target {
         item.update()
       })
 
-    //this.music.playShoot()
     // 手指触摸结束后碰撞检测
     if(datamanage.touchend){
       this.collisionDetection();

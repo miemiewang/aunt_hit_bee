@@ -2,8 +2,8 @@ import Animation from '../base/animation'
 import DataManage from '../datamanage.js'
 
 const ENEMY_IMG_SRC = 'images/enemy.png'
-const ENEMY_WIDTH = 20
-const ENEMY_HEIGHT = 20
+const ENEMY_WIDTH = 40
+const ENEMY_HEIGHT = 40
 
 const __ = {
   speed: Symbol('speed')
