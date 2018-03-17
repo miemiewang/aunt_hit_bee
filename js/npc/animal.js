@@ -15,28 +15,52 @@ let dataManage = new DataManage()
 export default class Animal extends Animation {
   constructor() {
     super(ENEMY_IMG_SRC, ENEMY_WIDTH, ENEMY_HEIGHT)
-    this.xspeed = 0
-    this.yspeed = 0
-    // this.init(ENEMY_IMG_SRC)
+    this.num = 0
+    this.startx = 0
+    this.startY = 0
+    this.maxvalue = 0
+    this.speed = 0
+    this.multipleNumX = 0
+    this.multipleNumY = 0
+    this.numSpeed = 0
   }
 
   init(image) {
-    this.x =  window.innerWidth / 2
-    this.y = window.innerHeight / 2
+    this.x = 0
+    this.y = Math.floor(Math.random() * window.innerHeight) + 200
+    this.startx = this.x
+    this.starty = this.y
+    this.num = 0
     this.img.src = image
-
+    this.maxvalue = Math.floor(Math.random() * 50)
+    this.speed = Math.floor(Math.random() * 2) + 3
+    this.multipleNumX = Math.floor(Math.random() * 2) + 2
+    this.multipleNumY = Math.floor(Math.random() * 2) + 2
+    this.numSpeed = Math.floor(Math.random() * 2) + 2
     this.visible = true
   }
 
   update() {
-    this.xspeed = Math.floor(Math.random() * 5) - 2
-    this.yspeed = Math.floor(Math.random() * 5) - 2
+    if (this.x > window.innerWidth ||
+      this.y > window.innerHeight ||
+      this.y < 0) {
+      this.x = 0
+      this.y = Math.floor(Math.random() * window.innerHeight)
+      this.startx = this.x
+      this.starty = this.y
+      this.num = 0
+      this.maxvalue = Math.floor(Math.random() * 50) + 1
+      this.speed = Math.floor(Math.random() * 2) + 2
+      this.multipleNumX = Math.floor(Math.random() * 2) + 2
+      this.multipleNumY = Math.floor(Math.random() * 2) + 2
+      this.numSpeed = Math.floor(Math.random() * 3) + 2
+    }
 
-    this.x +=this.xspeed
-    this.y +=this.yspeed
-    // // 对象回收
-    // if (this.x < 0)
-    //   dataManage.removeBee(this)
+    this.num = this.num + this.numSpeed
+
+    this.x = this.startx + this.multipleNumX * (this.num * Math.PI / 180) * this.maxvalue
+    this.y = this.starty + this.multipleNumY * Math.sin(this.num * Math.PI / 180) * this.maxvalue
+
   }
 
 } 

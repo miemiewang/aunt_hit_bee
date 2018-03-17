@@ -85,18 +85,21 @@ export default class Target {
   update() {
     if (datamanage.gameOver)
       return;
-    //this.bg.update()
+    this.bg.update()
 
     if (datamanage.gameOver)
       return;
 
     datamanage.bees
-      .concat(datamanage.flys)
       .forEach((item) => {
         item.update()
       })
 
-    this.collisionDetection()
+    datamanage.flys
+      .forEach((item) => {
+        item.update()
+      })
+
     this.music.playShoot()
     // 手指触摸结束后碰撞检测
     if(datamanage.touchend){
@@ -115,17 +118,31 @@ export default class Target {
   }
 
   recreateAnimal() {
-      let bee = datamanage.pool.getItemByClass('bee', Animal)
-      bee.init(BEE_IMAGE)
-      datamanage.bees.push(bee)
+    this.createBee()
 
-      let bee1 = datamanage.pool.getItemByClass('bee', Animal)
-      bee1.init(BEE_IMAGE)
-      datamanage.bees.push(bee1)
+    this.createBee()
 
-      let fly = datamanage.pool.getItemByClass('fly', Animal)
-      fly.init(FLY_IMAGE)
-      datamanage.flys.push(fly)
+    this.createBee()
+
+    this.createFly()
+
+    this.createFly()
+
+    this.createFly()
+
+    this.createFly()
+  }
+
+  createBee(){
+    let bee = datamanage.pool.getItemByClass('bee', Animal)
+    bee.init(BEE_IMAGE)
+    datamanage.bees.push(bee)
+  }
+
+  createFly() {
+    let fly = datamanage.pool.getItemByClass('fly', Animal)
+    fly.init(FLY_IMAGE)
+    datamanage.flys.push(fly)
   }
 
   // // 全局碰撞检测, 碰撞到蜜蜂死掉，碰撞到苍蝇加分
@@ -136,7 +153,6 @@ export default class Target {
 
       if (this.player.isCollideWith(bee)) {
         datamanage.gameOver = true
-
         break
       }
     }
@@ -146,7 +162,8 @@ export default class Target {
 
       if (this.player.isCollideWith(fly)) {
         datamanage.score ++
-        this.restart()
+        datamanage.removeFly(fly)
+        this.createFly()
         break
       }
     }
