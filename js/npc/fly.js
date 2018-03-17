@@ -1,7 +1,7 @@
 import Animation from '../base/animation'
 import DataManage from '../datamanage.js'
 
-const ENEMY_IMG_SRC = 'images/bee.png'
+const ENEMY_IMG_SRC = 'images/fly.png'
 const ENEMY_WIDTH = 40
 const ENEMY_HEIGHT = 40
 
@@ -25,7 +25,7 @@ export default class Animal extends Animation {
   }
 
   init() {
-    
+
     this.x = 0
     this.y = Math.floor(Math.random() * window.innerHeight) + 200
     this.startx = this.x

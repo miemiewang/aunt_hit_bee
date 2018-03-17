@@ -2,6 +2,7 @@ import DataManage from './datamanage'
 import Player from './player/player'
 import BackGround from './runtime/background'
 import Animal from './npc/animal.js'
+import Fly from './npc/fly.js'
 import GameInfo from './runtime/gameinfo'
 import Music from './runtime/music'
 
@@ -28,7 +29,6 @@ export default class Target {
 
   restart() {
     datamanage.reset()
-    console.log(datamanage.gameOver);
     canvas.removeEventListener(
       'touchstart',
       this.touchHandler
@@ -139,13 +139,13 @@ export default class Target {
 
   createBee(){
     let bee = datamanage.pool.getItemByClass('bee', Animal)
-    bee.init(BEE_IMAGE)
+    bee.init()
     datamanage.bees.push(bee)
   }
 
   createFly() {
-    let fly = datamanage.pool.getItemByClass('fly', Animal)
-    fly.init(FLY_IMAGE)
+    let fly = datamanage.pool.getItemByClass('fly', Fly)
+    fly.init()
     datamanage.flys.push(fly)
   }
 
@@ -166,7 +166,7 @@ export default class Target {
 
       if (this.player.isCollideWith(fly)) {
         that.music.playExplosion()
-        datamanage.score ++
+        datamanage.score++;
         datamanage.removeFly(fly)
         this.createFly()
         break
