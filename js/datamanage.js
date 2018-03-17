@@ -23,7 +23,7 @@ export default class DataManage {
     this.score = 0
     this.bees = []
     this.flys = []
-    this.gameover = false
+    this.gameOver = false
     this.touchend = false
   }
 

@@ -5,8 +5,8 @@ const screenWidth = window.innerWidth
 const screenHeight = window.innerHeight
 
 // 玩家相关常量设置
-const PLAYER_WIDTH = 40
-const PLAYER_HEIGHT = 40
+const PLAYER_WIDTH = 60
+const PLAYER_HEIGHT = 60
 
 let datamanage = new DataManage()
 

@@ -28,6 +28,7 @@ export default class Target {
 
   restart() {
     datamanage.reset()
+    console.log(datamanage.gameOver);
     canvas.removeEventListener(
       'touchstart',
       this.touchHandler
@@ -47,7 +48,6 @@ export default class Target {
       canvas
     )
     this.recreateAnimal();
-    datamanage.gameOver = false;
   }
 
   // 游戏结束后的触摸事件处理逻辑
